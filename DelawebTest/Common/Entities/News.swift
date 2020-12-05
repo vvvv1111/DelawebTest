@@ -27,7 +27,6 @@ struct Article: Codable {
     let urlToImage: String?
     let publishedAt: String
     let content: String?
-
     enum CodingKeys: String, CodingKey {
         case source, author, title
         case articleDescription = "description"

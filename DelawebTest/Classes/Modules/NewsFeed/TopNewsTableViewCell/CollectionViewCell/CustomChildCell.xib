@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomChildCell" id="gTV-IL-0wX" customClass="CustomChildCell" customModule="DelawebTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="372" height="340"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="372" height="340"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFY-zH-TPJ">
+                        <rect key="frame" x="0.0" y="0.0" width="372" height="340"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A suspect is dead after a shootout in which three U.S. Marshals were wounded in the Wakefield section of the Bronx." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08N-xg-eBw">
+                                <rect key="frame" x="8" y="202" width="356" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="356" id="mOc-fk-98F"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12321332438432489758724375832845789349782578324578923457892347895782345897349587" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dei-7i-fY8">
+                                <rect key="frame" x="8" y="264" width="356" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="OA1-YD-fep"/>
+                                    <constraint firstAttribute="width" constant="356" id="S77-sq-dEV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SnV-ZT-IDn">
+                                <rect key="frame" x="0.0" y="0.0" width="372" height="194"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="372" id="Vl1-4L-1aY"/>
+                                    <constraint firstAttribute="height" constant="194" id="lSE-V3-MgJ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Dei-7i-fY8" secondAttribute="trailing" constant="8" id="Cph-de-IOA"/>
+                            <constraint firstItem="SnV-ZT-IDn" firstAttribute="top" secondItem="vFY-zH-TPJ" secondAttribute="top" id="FcC-sw-i3Z"/>
+                            <constraint firstItem="Dei-7i-fY8" firstAttribute="bottom" secondItem="vFY-zH-TPJ" secondAttribute="bottomMargin" id="KZJ-XP-KX6"/>
+                            <constraint firstAttribute="trailing" secondItem="SnV-ZT-IDn" secondAttribute="trailing" id="OOQ-fD-X09"/>
+                            <constraint firstItem="08N-xg-eBw" firstAttribute="top" secondItem="SnV-ZT-IDn" secondAttribute="bottom" constant="8" id="Ozw-Ty-MHF"/>
+                            <constraint firstItem="Dei-7i-fY8" firstAttribute="top" secondItem="08N-xg-eBw" secondAttribute="bottom" constant="1" id="UJp-QG-oxe"/>
+                            <constraint firstAttribute="trailing" secondItem="08N-xg-eBw" secondAttribute="trailing" constant="8" id="V0p-Dc-yow"/>
+                            <constraint firstItem="SnV-ZT-IDn" firstAttribute="leading" secondItem="vFY-zH-TPJ" secondAttribute="leading" id="Zgj-c5-p3o"/>
+                            <constraint firstItem="Dei-7i-fY8" firstAttribute="leading" secondItem="vFY-zH-TPJ" secondAttribute="leading" constant="8" id="jdY-m6-70z"/>
+                            <constraint firstItem="08N-xg-eBw" firstAttribute="leading" secondItem="vFY-zH-TPJ" secondAttribute="leading" constant="8" id="rWs-Zb-XYK"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="vFY-zH-TPJ" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Boe-Yb-aNd"/>
+                <constraint firstItem="vFY-zH-TPJ" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="D9i-rL-qwc"/>
+                <constraint firstItem="vFY-zH-TPJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lde-Xo-9Zb"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="372" height="340"/>
+            <connections>
+                <outlet property="cellDesciption" destination="08N-xg-eBw" id="CT8-sd-Ule"/>
+                <outlet property="cellImage" destination="SnV-ZT-IDn" id="0QR-YT-Bld"/>
+                <outlet property="cellLabel" destination="Dei-7i-fY8" id="CiN-jJ-l5M"/>
+            </connections>
+            <point key="canvasLocation" x="-95.652173913043484" y="190.84821428571428"/>
+        </collectionViewCell>
+    </objects>
+</document>

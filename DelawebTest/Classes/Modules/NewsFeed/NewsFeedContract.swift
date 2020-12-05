@@ -28,6 +28,8 @@ protocol ViewToPresenterNewsFeedProtocol {
     func textLabelText(indexPath: IndexPath) -> String?
     func textDescriptionText(indexPath: IndexPath) -> String?
     func imageArticles(indexPath: IndexPath) -> UIImage?
+    func didSelectRowAt(index: Int)
+    func scrollViewDidScroll()
 }
 
 
@@ -38,6 +40,7 @@ protocol PresenterToInteractorNewsFeedProtocol {
     
     func loadArticles()
     func loadImages()
+    func retrieveQuote(at index: Int)
 }
 
 
@@ -45,10 +48,12 @@ protocol PresenterToInteractorNewsFeedProtocol {
 protocol InteractorToPresenterNewsFeedProtocol {
     func fetchArticlesSuccess(articles: [Article])
     func fetchImagesSuccess(images: [Data])
+    func getArticleAndImageSuccess(article:Article, data:Data)
 }
 
 
 // MARK: Router Input (Presenter -> Router)
 protocol PresenterToRouterNewsFeedProtocol {
     static func createModule() -> UINavigationController
+    func pushToArticleDetail(on view: PresenterToViewNewsFeedProtocol, with: Article, with image: UIImage)
 }

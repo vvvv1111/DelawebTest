@@ -9,6 +9,7 @@
 import UIKit
 
 class NewsFeedViewController: UITableViewController {
+    fileprivate var activityIndicator: LoadMoreActivityIndicator!
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -16,6 +17,11 @@ class NewsFeedViewController: UITableViewController {
         presenter?.viewDidLoad()
         let nib = UINib(nibName: "NewsTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "NewsTableViewCell")
+        
+        let nib2 = UINib(nibName: "TopNewsTableViewCell", bundle: nil)
+        tableView.register(nib2, forCellReuseIdentifier: "TopNewsTableViewCell")
+        
+        activityIndicator = LoadMoreActivityIndicator(scrollView: tableView, spacingFromLastCell: 10, spacingFromLastCellWhenLoadMoreActionStart: 60)
     }
     
     // MARK: - Properties
@@ -32,15 +38,30 @@ class NewsFeedViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
-       
-
-//        cell.textLabel?.text = presenter?.textLabelText(indexPath: indexPath)
-        cell.articleTitle.text = "dfdf"
-        cell.articleTitle.text = presenter?.textLabelText(indexPath: indexPath)
-        cell.articleDescription.text = presenter?.textDescriptionText(indexPath: indexPath)
-        cell.articleImage.image = presenter?.imageArticles(indexPath: indexPath)
-        return cell
+        if indexPath.row == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TopNewsTableViewCell", for: indexPath) as! TopNewsTableViewCell
+            cell.parentView = self
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
+            cell.articleTitle.text = presenter?.textLabelText(indexPath: indexPath)
+            cell.articleDescription.text = presenter?.textDescriptionText(indexPath: indexPath)
+            cell.articleImage.image = presenter?.imageArticles(indexPath: indexPath)
+            return cell
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.didSelectRowAt(index: indexPath.row)
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
+            presenter!.scrollViewDidScroll()
+//            activityIndicator.start{
+//                print("SDFsdf")
+//            }
+        }
     }
     
 }
@@ -58,7 +79,6 @@ extension NewsFeedViewController: PresenterToViewNewsFeedProtocol{
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
-        
     }
     
 }

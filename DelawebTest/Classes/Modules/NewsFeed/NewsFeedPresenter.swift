@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class NewsFeedPresenter: ViewToPresenterNewsFeedProtocol {
-
+  
     // MARK: Properties
     var view: PresenterToViewNewsFeedProtocol?
     var interactor: PresenterToInteractorNewsFeedProtocol?
@@ -22,8 +22,8 @@ class NewsFeedPresenter: ViewToPresenterNewsFeedProtocol {
     
     // MARK: Inputs from view
     func viewDidLoad() {
-        print("Presenter is being notified that the View was loaded.")
-        interactor?.loadArticles()
+//        print("Presenter is being notified that the View was loaded.")
+//        interactor?.loadArticles()
        
     }
     
@@ -32,39 +32,43 @@ class NewsFeedPresenter: ViewToPresenterNewsFeedProtocol {
 //         print("Presenter is being notified that the View was refreshed.")
 //         interactor?.loadArticles()
 //     }
+    
+    func scrollViewDidScroll() {
+        interactor?.loadArticles()
+      }
      
     func numberOfRowsInSection() -> Int {
         if articles.count == 0{
             return 0
         }
-        return articles.count
+        return articles.count + 1
     }
      
      func textLabelText(indexPath: IndexPath) -> String? {
          if articles.count == 0{
              return nil
          }
-        return articles[indexPath.row].title
+        return articles[indexPath.row - 1].title
      }
     
     func textDescriptionText(indexPath: IndexPath) -> String? {
             if articles.count == 0{
                 return nil
             }
-           return articles[indexPath.row].articleDescription
+           return articles[indexPath.row - 1].articleDescription
         }
     
     func imageArticles(indexPath: IndexPath) -> UIImage? {
         if images.count == 0{
             return nil
         }
-        return images[indexPath.row]
+        return images[indexPath.row - 1]
     }
     
 
-//     func didSelectRowAt(index: Int) {
-//         interactor?.retrieveQuote(at: index)
-//     }
+     func didSelectRowAt(index: Int) {
+         interactor?.retrieveQuote(at: index)
+     }
 //
 //     func deselectRowAt(index: Int) {
 //         view?.deselectRowAt(row: index)
@@ -72,6 +76,10 @@ class NewsFeedPresenter: ViewToPresenterNewsFeedProtocol {
 }
 
 extension NewsFeedPresenter: InteractorToPresenterNewsFeedProtocol {
+    func getArticleAndImageSuccess(article: Article, data: Data) {
+        router?.pushToArticleDetail(on: view!, with: article, with: UIImage(data: data)!)
+    }
+    
     func fetchArticlesSuccess(articles: [Article]) {
         print("Presenter receives the result from Interactor after it's done its job.")
         self.articles = articles
@@ -81,16 +89,16 @@ extension NewsFeedPresenter: InteractorToPresenterNewsFeedProtocol {
     
     func fetchImagesSuccess(images: [Data]) {
         print("Presenter receives the result from Interactor after it's done its job.")
-        print(images)
         for index in 0..<images.count{
-            self.images.append(UIImage(data: images[index])!)
-
-//            if images[index] != nil{
-//                self.images.append(UIImage(data: images[index])!)
-//            }else{
-//                let image = UIImage()
-//                self.images.append(image)
-//            }
+            let delimiter = " bytes"
+            let token = images[index].description.components(separatedBy: delimiter)
+            if Int(token[0])! < 12370 {
+                let image = UIImage(named: "error.jpg")!
+                self.images.append(image)
+            }else{
+                self.images.append(UIImage(data: images[index])!)
+            }
+            
         }
         view?.onFetchImagesSuccess()
     }
