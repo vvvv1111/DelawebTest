@@ -19,7 +19,7 @@ class TopNewsTableViewInteractor: PresenterToInteractorTopNewsTableViewProtocol 
     
     func loadArticles() {
         print("Interactor receives the request from Presenter to load articles from the server.")
-        NetworkService.shared.loadNews(from: "https://newsapi.org/v2/top-headlines?country=us&pageSize=10&apiKey=27ba51434f0f490da809b6a44d74ddb5") { (news) in
+        NetworkService.shared.loadNews(from: "https://newsapi.org/v2/top-headlines?country=us&pageSize=10&apiKey=7a0e8be631e24659b15af7cbb7d7751d") { (news) in
             self.news = news
             for i in 0..<news.articles.count{
                 self.articles.append(news.articles[i])

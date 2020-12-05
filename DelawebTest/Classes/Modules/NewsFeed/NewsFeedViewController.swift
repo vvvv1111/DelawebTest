@@ -9,7 +9,7 @@
 import UIKit
 
 class NewsFeedViewController: UITableViewController {
-    fileprivate var activityIndicator: LoadMoreActivityIndicator!
+     var activityIndicator: LoadMoreActivityIndicator!
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -76,9 +76,9 @@ extension NewsFeedViewController: PresenterToViewNewsFeedProtocol{
     
     func onFetchArticlesSuccess() {
         print("View receives the response from Presenter and updates itself.")
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//        }
     }
     
 }

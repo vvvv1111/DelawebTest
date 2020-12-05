@@ -15,7 +15,7 @@ class NewsFeedPresenter: ViewToPresenterNewsFeedProtocol {
     var view: PresenterToViewNewsFeedProtocol?
     var interactor: PresenterToInteractorNewsFeedProtocol?
     var router: PresenterToRouterNewsFeedProtocol?
-    
+    var alreadyRunning = false
     var articles: [Article] = []
     var images: [UIImage] = []
     
@@ -34,9 +34,13 @@ class NewsFeedPresenter: ViewToPresenterNewsFeedProtocol {
 //     }
     
     func scrollViewDidScroll() {
-        interactor?.loadArticles()
-      }
-     
+        if self.alreadyRunning == false {
+            self.alreadyRunning = true
+            self.interactor?.loadArticles()
+            self.view?.activityIndicator.start(closure: {})
+        }
+    }
+    
     func numberOfRowsInSection() -> Int {
         if articles.count == 0{
             return 0
@@ -67,7 +71,7 @@ class NewsFeedPresenter: ViewToPresenterNewsFeedProtocol {
     
 
      func didSelectRowAt(index: Int) {
-         interactor?.retrieveQuote(at: index)
+         interactor?.retrieveArticle(at: index)
      }
 //
 //     func deselectRowAt(index: Int) {
@@ -100,6 +104,8 @@ extension NewsFeedPresenter: InteractorToPresenterNewsFeedProtocol {
             }
             
         }
+        alreadyRunning = false
+        view?.activityIndicator.stop()
         view?.onFetchImagesSuccess()
     }
     

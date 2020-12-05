@@ -13,6 +13,8 @@ import UIKit
 protocol PresenterToViewNewsFeedProtocol {
     func onFetchArticlesSuccess()
     func onFetchImagesSuccess()
+    var activityIndicator: LoadMoreActivityIndicator! { get set }
+
 }
 
 
@@ -40,7 +42,7 @@ protocol PresenterToInteractorNewsFeedProtocol {
     
     func loadArticles()
     func loadImages()
-    func retrieveQuote(at index: Int)
+    func retrieveArticle(at index: Int)
 }
 
 
