@@ -9,8 +9,6 @@
 import Foundation
 
 class NewsFeedInteractor: PresenterToInteractorNewsFeedProtocol {
- 
-    
 
     // MARK: Properties
     var presenter: InteractorToPresenterNewsFeedProtocol?
@@ -21,7 +19,6 @@ class NewsFeedInteractor: PresenterToInteractorNewsFeedProtocol {
     
     var numberOfPage = 1
     
-    //http://newsapi.org/v2/everything?q=world&page=2&sortBy=publishedAt&apiKey=27ba51434f0f490da809b6a44d74ddb5
     
     func loadArticles() {
         print("Interactor receives the request from Presenter to load articles from the server.")

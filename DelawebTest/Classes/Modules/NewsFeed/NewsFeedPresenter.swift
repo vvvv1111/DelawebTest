@@ -81,7 +81,13 @@ class NewsFeedPresenter: ViewToPresenterNewsFeedProtocol {
 
 extension NewsFeedPresenter: InteractorToPresenterNewsFeedProtocol {
     func getArticleAndImageSuccess(article: Article, data: Data) {
-        router?.pushToArticleDetail(on: view!, with: article, with: UIImage(data: data)!)
+        var image = UIImage()
+        if let imagee = UIImage(data: data) {
+            image = imagee
+        }else{
+            image = UIImage(named: "error.jpg")!
+        }
+        router?.pushToArticleDetail(on: view!, with: article, with: image)
     }
     
     func fetchArticlesSuccess(articles: [Article]) {
@@ -92,17 +98,15 @@ extension NewsFeedPresenter: InteractorToPresenterNewsFeedProtocol {
     }
     
     func fetchImagesSuccess(images: [Data]) {
+        self.images = []
         print("Presenter receives the result from Interactor after it's done its job.")
         for index in 0..<images.count{
-            let delimiter = " bytes"
-            let token = images[index].description.components(separatedBy: delimiter)
-            if Int(token[0])! < 12370 {
-                let image = UIImage(named: "error.jpg")!
+            if let image = UIImage(data: images[index]) {
                 self.images.append(image)
             }else{
-                self.images.append(UIImage(data: images[index])!)
+                let image = UIImage(named: "error.jpg")!
+                self.images.append(image)
             }
-            
         }
         alreadyRunning = false
         view?.activityIndicator.stop()
