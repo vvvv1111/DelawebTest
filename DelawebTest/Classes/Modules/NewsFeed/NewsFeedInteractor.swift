@@ -37,7 +37,6 @@ class NewsFeedInteractor: PresenterToInteractorNewsFeedProtocol {
         NetworkService.shared.loadImages(from: news!) { (image) in
             self.images.append(image)
             if self.images.count == self.articles.count{
-                print(self.images)
                 self.presenter!.fetchImagesSuccess(images: self.images)
             }
         }

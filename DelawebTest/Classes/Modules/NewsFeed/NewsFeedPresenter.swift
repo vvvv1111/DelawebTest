@@ -84,7 +84,7 @@ extension NewsFeedPresenter: InteractorToPresenterNewsFeedProtocol {
         if let imagee = UIImage(data: data) {
             image = imagee
         }else{
-            image = UIImage(named: "error.jpg")!
+            image = UIImage(named: "imageNotFound.png")!
         }
         router?.pushToArticleDetail(on: view!, with: article, with: image)
     }
@@ -103,7 +103,7 @@ extension NewsFeedPresenter: InteractorToPresenterNewsFeedProtocol {
             if let image = UIImage(data: images[index]) {
                 self.images.append(image)
             }else{
-                let image = UIImage(named: "error.jpg")!
+                let image = UIImage(named: "imageNotFound.png")!
                 self.images.append(image)
             }
         }

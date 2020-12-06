@@ -34,7 +34,6 @@ class TopNewsTableViewInteractor: PresenterToInteractorTopNewsTableViewProtocol 
             //            self.images = images
             self.images.append(image)
             if self.images.count == 10{
-                print(self.images)
                 self.presenter!.fetchImagesSuccess(images: self.images)
             }
         }

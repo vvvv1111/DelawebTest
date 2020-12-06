@@ -86,7 +86,7 @@ extension TopNewsTableViewPresenter: InteractorToPresenterTopNewsTableViewProtoc
                 let delimiter = " bytes"
                 let token = images[index].description.components(separatedBy: delimiter)
                 if Int(token[0])! < 12370 {
-                    let image = UIImage(named: "error.jpg")!
+                    let image = UIImage(named: "imageNotFound.png")!
                     self.images.append(image)
                 }else{
                     self.images.append(UIImage(data: images[index])!)
