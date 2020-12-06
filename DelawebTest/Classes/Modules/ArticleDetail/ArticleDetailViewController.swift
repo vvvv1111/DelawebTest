@@ -22,8 +22,8 @@ class ArticleDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         articlesImage.image = presenter?.articlesImage
-        articlesTitle.text = presenter?.article?.title
-        articlesDescription.text = presenter?.article?.articleDescription
+        articlesTitle.text = presenter?.article?.articleDescription
+        articlesDescription.text =  presenter?.article?.title
 //        urlButtonLabel.setTitle(presenter?.article?.url, for: .normal)
         urlButtonLabel.setTitle("url", for: .normal)
 

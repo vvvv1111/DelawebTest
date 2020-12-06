@@ -86,17 +86,19 @@ class LoadMoreActivityIndicator {
     }
 
     func stop(completion: (() -> Void)? = nil) {
-        guard let scrollView = scrollView , let activityIndicatorView = activityIndicatorView else { return }
-        let contentDelta = scrollView.contentSize.height - scrollView.frame.size.height
-        let offsetDelta = scrollView.contentOffset.y - contentDelta
-        if offsetDelta >= 0 {
-            UIView.animate(withDuration: 0.3, animations: {
+        DispatchQueue.main.async {
+            guard let scrollView = self.scrollView , let activityIndicatorView = self.activityIndicatorView else { return }
+            let contentDelta = scrollView.contentSize.height - scrollView.frame.size.height
+            let offsetDelta = scrollView.contentOffset.y - contentDelta
+            if offsetDelta >= 0 {
+                UIView.animate(withDuration: 0.3, animations: {
+                    scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                }) { _ in completion?() }
+            } else {
                 scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            }) { _ in completion?() }
-        } else {
-            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            completion?()
+                completion?()
+            }
+            activityIndicatorView.stopAnimating()
         }
-        activityIndicatorView.stopAnimating()
     }
 }
