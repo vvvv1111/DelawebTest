@@ -13,9 +13,7 @@ class NewsDetailRouter: PresenterToRouterNewsDetailProtocol {
     
     // MARK: Static methods
     static func createModule() -> UIViewController {
-        
         let viewController = NewsDetailViewController()
-        
         let presenter: ViewToPresenterNewsDetailProtocol & InteractorToPresenterNewsDetailProtocol = NewsDetailPresenter()
         
         viewController.presenter = presenter

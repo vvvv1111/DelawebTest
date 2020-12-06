@@ -9,7 +9,7 @@
 import UIKit
 
 class NewsFeedViewController: UITableViewController {
-     var activityIndicator: LoadMoreActivityIndicator!
+    var activityIndicator: LoadMoreActivityIndicator!
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -58,9 +58,6 @@ class NewsFeedViewController: UITableViewController {
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
             presenter!.scrollViewDidScroll()
-//            activityIndicator.start{
-//                print("SDFsdf")
-//            }
         }
     }
     
@@ -76,9 +73,9 @@ extension NewsFeedViewController: PresenterToViewNewsFeedProtocol{
     
     func onFetchArticlesSuccess() {
         print("View receives the response from Presenter and updates itself.")
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
+        //        DispatchQueue.main.async {
+        //            self.tableView.reloadData()
+        //        }
     }
     
 }

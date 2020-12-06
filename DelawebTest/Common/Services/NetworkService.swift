@@ -13,8 +13,6 @@ class NetworkService {
     
     static let shared = NetworkService()
     
-  
-    
     func loadNews(from urlString: String, completion: @escaping (News) -> Void){
         guard let url = URL(string: urlString) else {return}
         URLSession.shared.dataTask(with: url) { (data, response, error) in

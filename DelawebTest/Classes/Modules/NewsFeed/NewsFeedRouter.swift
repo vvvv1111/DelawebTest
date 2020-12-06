@@ -11,13 +11,6 @@ import UIKit
 
 class NewsFeedRouter: PresenterToRouterNewsFeedProtocol {
 
-    
-
-    
-  
-    
-
-    
     // MARK: Static methods
     static func createModule() -> UINavigationController {
         
@@ -36,15 +29,14 @@ class NewsFeedRouter: PresenterToRouterNewsFeedProtocol {
     }
     
     func pushToArticleDetail(on view: PresenterToViewNewsFeedProtocol, with article: Article, with image: UIImage) {
-          print("QuotesRouter is instructed to push QuoteDetailViewController onto the navigation stack.")
+        print("QuotesRouter is instructed to push QuoteDetailViewController onto the navigation stack.")
         let articleDetailViewController = ArticleDetailRouter.createModule(with: article, with: image)
-
-          let viewController = view as! NewsFeedViewController
-          viewController.navigationController?
-              .pushViewController(articleDetailViewController, animated: true)
-
-      }
+        
+        let viewController = view as! NewsFeedViewController
+        viewController.navigationController?
+            .pushViewController(articleDetailViewController, animated: true)
+    }
     
- 
+    
     
 }

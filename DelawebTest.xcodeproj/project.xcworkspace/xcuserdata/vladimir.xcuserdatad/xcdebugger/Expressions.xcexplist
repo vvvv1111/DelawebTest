@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "NetworkService.loadImages(from:completion:):NetworkService.swift">
+      </ContextState>
+      <ContextState
+         contextName = "mach_msg_trap:(null)">
+         <PersistentStrings>
+            <PersistentString
+               value = "images">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NewsFeedInteractor.loadImages():NewsFeedInteractor.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in NetworkService.loadImages(from:completion:):NetworkService.swift">
+      </ContextState>
+      <ContextState
+         contextName = "NewsFeedViewController.tableView(_:cellForRowAt:):NewsFeedViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "numberOfRowsInSection">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NewsFeedPresenter.imageArticles(indexPath:):NewsFeedPresenter.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in NewsFeedInteractor.loadImages():NewsFeedInteractor.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

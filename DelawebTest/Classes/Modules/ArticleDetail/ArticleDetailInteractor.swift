@@ -12,9 +12,5 @@ import UIKit
 class ArticleDetailInteractor: PresenterToInteractorArticleDetailProtocol {
     
     // MARK: Properties
-
-
     var presenter: InteractorToPresenterArticleDetailProtocol?
-    
- 
 }

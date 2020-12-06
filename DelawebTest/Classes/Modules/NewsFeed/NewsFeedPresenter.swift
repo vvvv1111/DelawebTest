@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class NewsFeedPresenter: ViewToPresenterNewsFeedProtocol {
-  
+    
     // MARK: Properties
     var view: PresenterToViewNewsFeedProtocol?
     var interactor: PresenterToInteractorNewsFeedProtocol?
@@ -24,14 +24,13 @@ class NewsFeedPresenter: ViewToPresenterNewsFeedProtocol {
     func viewDidLoad() {
 //        print("Presenter is being notified that the View was loaded.")
 //        interactor?.loadArticles()
-       
     }
     
     
-//     func refresh() {
-//         print("Presenter is being notified that the View was refreshed.")
-//         interactor?.loadArticles()
-//     }
+    //     func refresh() {
+    //         print("Presenter is being notified that the View was refreshed.")
+    //         interactor?.loadArticles()
+    //     }
     
     func scrollViewDidScroll() {
         if self.alreadyRunning == false {
@@ -47,20 +46,20 @@ class NewsFeedPresenter: ViewToPresenterNewsFeedProtocol {
         }
         return articles.count + 1
     }
-     
-     func textLabelText(indexPath: IndexPath) -> String? {
-         if articles.count == 0{
-             return nil
-         }
+    
+    func textLabelText(indexPath: IndexPath) -> String? {
+        if articles.count == 0{
+            return nil
+        }
         return articles[indexPath.row - 1].title
-     }
+    }
     
     func textDescriptionText(indexPath: IndexPath) -> String? {
-            if articles.count == 0{
-                return nil
-            }
-           return articles[indexPath.row - 1].articleDescription
+        if articles.count == 0{
+            return nil
         }
+        return articles[indexPath.row - 1].articleDescription
+    }
     
     func imageArticles(indexPath: IndexPath) -> UIImage? {
         if images.count == 0{
@@ -69,14 +68,14 @@ class NewsFeedPresenter: ViewToPresenterNewsFeedProtocol {
         return images[indexPath.row - 1]
     }
     
-
-     func didSelectRowAt(index: Int) {
-         interactor?.retrieveArticle(at: index)
-     }
-//
-//     func deselectRowAt(index: Int) {
-//         view?.deselectRowAt(row: index)
-//     }
+    
+    func didSelectRowAt(index: Int) {
+        interactor?.retrieveArticle(at: index)
+    }
+    //
+    //     func deselectRowAt(index: Int) {
+    //         view?.deselectRowAt(row: index)
+    //     }
 }
 
 extension NewsFeedPresenter: InteractorToPresenterNewsFeedProtocol {
@@ -113,16 +112,16 @@ extension NewsFeedPresenter: InteractorToPresenterNewsFeedProtocol {
         view?.onFetchImagesSuccess()
     }
     
-//    func fetchArticlesFailure(errorCode: Int) {
-//        print("Presenter receives the result from Interactor after it's done its job.")
-//        view?.onFetchArticlesFailure(error: "Couldn't fetch articles: \(errorCode)")
-//    }
+    //    func fetchArticlesFailure(errorCode: Int) {
+    //        print("Presenter receives the result from Interactor after it's done its job.")
+    //        view?.onFetchArticlesFailure(error: "Couldn't fetch articles: \(errorCode)")
+    //    }
     
-//    func getArticleSuccess(_ article: Article) {
-//        router?.pushToArticleDetail(on: view!, with: article)
-//    }
+    //    func getArticleSuccess(_ article: Article) {
+    //        router?.pushToArticleDetail(on: view!, with: article)
+    //    }
     
-//    func getArticleFailure() {
-//        print("Couldn't retrieve article by index")
-//    }
+    //    func getArticleFailure() {
+    //        print("Couldn't retrieve article by index")
+    //    }
 }

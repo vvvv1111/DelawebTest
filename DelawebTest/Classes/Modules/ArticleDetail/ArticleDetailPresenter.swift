@@ -10,10 +10,6 @@ import Foundation
 import UIKit
 
 class ArticleDetailPresenter: ViewToPresenterArticleDetailProtocol {
-  
-    
- 
-
     // MARK: Properties
     var view: PresenterToViewArticleDetailProtocol?
     var interactor: PresenterToInteractorArticleDetailProtocol?
